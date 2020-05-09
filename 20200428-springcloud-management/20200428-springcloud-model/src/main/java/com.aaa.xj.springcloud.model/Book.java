@@ -1,0 +1,26 @@
+package com.aaa.xj.springcloud.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.io.Serializable;
+
+@Data
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class Book  implements Serializable {
+    private Long bookId;
+
+    private String bookName;
+
+    private Integer bookStore;
+
+    private Integer bookPrice;
+
+    private Integer bookState;
+
+
+}

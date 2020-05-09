@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.xj.springcloud.mapper.BookMapper" >
+  <resultMap id="BaseResultMap" type="com.aaa.xj.springcloud.model.Book" >
+    <id column="book_id" property="bookId" jdbcType="BIGINT" />
+    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+    <result column="book_store" property="bookStore" jdbcType="INTEGER" />
+    <result column="book_price" property="bookPrice" jdbcType="INTEGER" />
+    <result column="book_state" property="bookState" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from book_info
+    where book_id = #{bookId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.aaa.xj.springcloud.model.Book" >
+    insert into book_info (book_id, book_name, book_store, 
+      book_price, book_state)
+    values (#{bookId,jdbcType=BIGINT}, #{bookName,jdbcType=VARCHAR}, #{bookStore,jdbcType=INTEGER}, 
+      #{bookPrice,jdbcType=INTEGER}, #{bookState,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.aaa.xj.springcloud.model.Book" >
+    update book_info
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_store = #{bookStore,jdbcType=INTEGER},
+      book_price = #{bookPrice,jdbcType=INTEGER},
+      book_state = #{bookState,jdbcType=INTEGER}
+    where book_id = #{bookId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select book_id, book_name, book_store, book_price, book_state
+    from book_info
+    where book_id = #{bookId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select book_id, book_name, book_store, book_price, book_state
+    from book_info
+  </select>
+</mapper>
